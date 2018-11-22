@@ -28,6 +28,7 @@ public class SimpleTest {
         MyPojoPart2Bean part2Bean = new MyPojoPart2Bean();
         part2Bean.setAge(10);
 
+        // overwritten by new instance
         destDto = mapper.map(part2Bean, MyPojoDto.class);
         assertThat(destDto).isNotNull();
         assertThat(destDto.getName()).isNull();
@@ -50,7 +51,7 @@ public class SimpleTest {
         MyPojoPart2Bean part2Bean = new MyPojoPart2Bean();
         part2Bean.setAge(10);
 
-        // use existing instance
+        // use existing instance (not overwritten)
         mapper.map(part2Bean, destDto);
 
         assertThat(destDto).isNotNull();
