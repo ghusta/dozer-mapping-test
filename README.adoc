@@ -1,8 +1,16 @@
 = Dozer Mapping Test
 
-image:https://travis-ci.org/ghusta/dozer-mapping-test.svg?branch=master["Build Status", link="https://travis-ci.org/ghusta/dozer-mapping-test"]
+image:https://travis-ci.org/ghusta/dozer-mapping-test.svg?branch=jdk-11["Build Status", link="https://travis-ci.org/ghusta/dozer-mapping-test"]
 
 Testing the Dozer library for Java.
+
+== Migration to Java 11
+
+Problems :
+
+* JAX-B implementation missing.
+
+See https://blog.codefx.org/java/java-11-migration-guide/#Migrating-From-Java-8-To-Java-11[Migrating From Java 8 To Java 11]
 
 == References
 
