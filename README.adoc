@@ -1,5 +1,7 @@
 = Dozer Mapping Test
 
+image:https://travis-ci.org/ghusta/dozer-mapping-test.svg?branch=master["Build Status", link="https://travis-ci.org/ghusta/dozer-mapping-test"]
+
 Testing the Dozer library for Java.
 
 == References
