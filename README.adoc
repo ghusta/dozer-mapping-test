@@ -1,0 +1,8 @@
+= Dozer Mapping Test
+
+Testing the Dozer library for Java.
+
+== References
+
+* https://github.com/DozerMapper/dozer[GitHub project]
+* https://dozermapper.github.io/gitbook/[Project documentation]
