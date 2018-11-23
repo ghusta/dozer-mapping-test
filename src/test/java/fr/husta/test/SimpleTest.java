@@ -38,7 +38,6 @@ public class SimpleTest {
         assertThat(destDto.getName()).isNull();
         assertThat(destDto.getAge()).isEqualTo(10);
         assertThat(destDto.getDob()).isEqualTo("2000-08-31");
-
     }
 
     @Test
@@ -64,7 +63,6 @@ public class SimpleTest {
         assertThat(destDto.getName()).isEqualTo("Toto");
         assertThat(destDto.getAge()).isEqualTo(10);
         assertThat(destDto.getDob()).isEqualTo("2000-08-31");
-
     }
 
 }
