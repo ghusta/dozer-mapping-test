@@ -5,23 +5,23 @@ import com.github.dozermapper.core.Mapper;
 
 public class MapperUtils {
 
-    private static Mapper instance;
+    private static final Mapper instance;
 
-    private MapperUtils() {
-    }
-
-    public static Mapper getMapper() {
-        if (instance == null) {
-            init();
-        }
-        return instance;
-    }
-
-    private static synchronized void init() {
+    static {
+        // See : https://dozermapper.github.io/gitbook/documentation/gettingstarted.html
+        // and : https://dozermapper.github.io/gitbook/documentation/usage.html
         instance = DozerBeanMapperBuilder
                 .create()
                 .withMappingFiles("dozerBeanMapping.xml")
                 .build();
+    }
+
+    private MapperUtils() {
+        throw new AssertionError();
+    }
+
+    public static Mapper getMapper() {
+        return instance;
     }
 
 }
