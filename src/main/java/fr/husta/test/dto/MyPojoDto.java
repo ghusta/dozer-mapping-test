@@ -15,4 +15,7 @@ public class MyPojoDto
     private int age;
     private LocalDate dob;
 
+    // nested pojo
+    private MyNestedPojoDto myNestedPojoDto;
+
 }

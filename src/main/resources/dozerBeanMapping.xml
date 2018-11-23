@@ -3,4 +3,32 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping http://dozermapper.github.io/schema/bean-mapping.xsd">
 
+    <!-- Default mapping MyPojoPart1Bean <-> MyPojoDto -->
+    <mapping>
+        <class-a>fr.husta.test.model.MyPojoPart1Bean</class-a>
+        <class-b>fr.husta.test.dto.MyPojoDto</class-b>
+        <field>
+            <a>myNestedPojoBean</a>
+            <b>myNestedPojoDto</b>
+        </field>
+    </mapping>
+
+    <mapping map-id="special-mapping-nested-beans">
+        <class-a>fr.husta.test.model.MyPojoPart1Bean</class-a>
+        <class-b>fr.husta.test.dto.MyPojoDto</class-b>
+        <field map-id="special-mapping" type="bi-directional">
+            <a>myNestedPojoBean</a>
+            <b>myNestedPojoDto</b>
+        </field>
+    </mapping>
+
+    <mapping map-id="special-mapping">
+        <class-a>fr.husta.test.dto.MyNestedPojoDto</class-a>
+        <class-b>fr.husta.test.model.MyNestedPojoBean</class-b>
+        <field>
+            <a>description</a>
+            <b>description2</b>
+        </field>
+    </mapping>
+
 </mappings>
