@@ -7,6 +7,9 @@ import fr.husta.test.model.MyPojoPart2Bean;
 import fr.husta.test.utils.MapperUtils;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SimpleTest {
@@ -27,12 +30,14 @@ public class SimpleTest {
 
         MyPojoPart2Bean part2Bean = new MyPojoPart2Bean();
         part2Bean.setAge(10);
+        part2Bean.setDob(LocalDate.of(2000, Month.AUGUST, 31));
 
         // overwritten by new instance
         destDto = mapper.map(part2Bean, MyPojoDto.class);
         assertThat(destDto).isNotNull();
         assertThat(destDto.getName()).isNull();
         assertThat(destDto.getAge()).isEqualTo(10);
+        assertThat(destDto.getDob()).isEqualTo("2000-08-31");
 
     }
 
@@ -50,6 +55,7 @@ public class SimpleTest {
 
         MyPojoPart2Bean part2Bean = new MyPojoPart2Bean();
         part2Bean.setAge(10);
+        part2Bean.setDob(LocalDate.of(2000, Month.AUGUST, 31));
 
         // use existing instance (not overwritten)
         mapper.map(part2Bean, destDto);
@@ -57,6 +63,7 @@ public class SimpleTest {
         assertThat(destDto).isNotNull();
         assertThat(destDto.getName()).isEqualTo("Toto");
         assertThat(destDto.getAge()).isEqualTo(10);
+        assertThat(destDto.getDob()).isEqualTo("2000-08-31");
 
     }
 
