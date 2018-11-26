@@ -13,3 +13,4 @@ Testing the Dozer library for Java.
 ** https://dozermapper.github.io/gitbook/documentation/advancedproperty.html[Using Assembler Pattern], with successive mappings to the same target instance
 * Specific to Hibernate :
 ** https://stackoverflow.com/questions/5552379/prevent-dozer-from-triggering-hibernate-lazy-loading[Prevent Dozer from triggering Hibernate lazy loading]
+** https://github.com/DozerMapper/dozer/issues/190[Infinite mapping with Hibernate Bug] (using HibernateProxyResolver...)
