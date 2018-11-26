@@ -41,6 +41,9 @@ public class SimpleTest {
         assertThat(destDto.getDob()).isEqualTo("2000-08-31");
     }
 
+    /**
+     * See : https://dozermapper.github.io/gitbook/documentation/contextmapping.html
+     */
     @Test
     public void mapWithOverwritingUsingMapId() {
         MyPojoPart1Bean part1Bean = new MyPojoPart1Bean();
@@ -81,6 +84,9 @@ public class SimpleTest {
         assertThat(destDto.getMyNestedPojoDto().getLabel()).isNull();
     }
 
+    /**
+     * See : https://dozermapper.github.io/gitbook/documentation/advancedproperty.html
+     */
     @Test
     public void mapCumulative() {
         MyPojoDto destDto = new MyPojoDto();
