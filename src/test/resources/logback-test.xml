@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- HIBERNATE -->
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder"  >
+        <level value="trace"/>
+    </logger>
+    <logger name="org.hibernate"  >
+        <level value="info"/>
+    </logger>
+
+    <logger name="com.zaxxer.hikari"  >
+        <level value="info"/>
+    </logger>
+
+    <logger name="fr.husta.test.dozer">
+        <level value="debug"/>
+    </logger>
+
+    <root level="warn">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
