@@ -7,25 +7,37 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.collection.spi.PersistentCollection;
 
 /**
- * CustomFieldMapper to avoid triggering Lazy Loading with Hibernate.
+ * CustomFieldMapper to manage Lazy Loading with Hibernate.
  *
  * @see com.github.dozermapper.core.DozerBeanMapperBuilder
  */
 @Slf4j
-public class HibernateLazyLoadingAwareMapper
+public abstract class HibernateLazyLoadingAwareMapper
         implements CustomFieldMapper {
+
+    private final boolean skipLazyLoading;
+
+    protected HibernateLazyLoadingAwareMapper(boolean skipLazyLoading) {
+        this.skipLazyLoading = skipLazyLoading;
+        log.debug("skipLazyLoading is : {}", skipLazyLoading);
+    }
 
     @Override
     public boolean mapField(Object source, Object destination, Object sourceFieldValue, ClassMap classMap, FieldMap fieldMapping) {
-        // If field is initialized, Dozer will continue mapping
-        boolean stopMapping = false;
+        if (skipLazyLoading) {
+            // If field is initialized, Dozer will continue mapping
+            boolean stopMapping = false;
 
-        // Spans PersistentBag, PersistentSet, PersistentList, etc.
-        if (sourceFieldValue instanceof PersistentCollection) {
-            stopMapping = !((PersistentCollection) sourceFieldValue).wasInitialized();
+            // Spans PersistentBag, PersistentSet, PersistentList, etc.
+            if (sourceFieldValue instanceof PersistentCollection) {
+                boolean wasInitialized = ((PersistentCollection) sourceFieldValue).wasInitialized();
+                stopMapping = !wasInitialized;
+            }
+
+            return stopMapping;
+        } else {
+            return false;
         }
-
-        return stopMapping;
     }
 
 }
