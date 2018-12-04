@@ -14,12 +14,12 @@ import org.hibernate.proxy.LazyInitializer;
  * @see com.github.dozermapper.core.DozerBeanMapperBuilder
  */
 @Slf4j
-public abstract class HibernateLazyLoadingAwareMapper
+public abstract class HibernateLazyLoadingAwareFieldMapper
         implements CustomFieldMapper {
 
     private final boolean skipLazyLoading;
 
-    protected HibernateLazyLoadingAwareMapper(boolean skipLazyLoading) {
+    protected HibernateLazyLoadingAwareFieldMapper(boolean skipLazyLoading) {
         this.skipLazyLoading = skipLazyLoading;
         log.debug("skipLazyLoading is : {}", skipLazyLoading);
     }
@@ -32,25 +32,27 @@ public abstract class HibernateLazyLoadingAwareMapper
 
             // in case of Hibernate mapping. Ex : @ManyToOne
             if (source instanceof HibernateProxy) {
-                log.debug("Source : {} (@{}) est un HibernateProxy", source.getClass().getName(), source.hashCode());
+                // NOTE: the HibernateProxy will be initialized anyway...
+                // see also org.hibernate.Hibernate#initialize
+                log.debug("Source : {} (@{}) is a HibernateProxy", source.getClass().getName(), source.hashCode());
                 HibernateProxy sourceHibernateProxy = (HibernateProxy) source;
                 LazyInitializer lazyInitializer = sourceHibernateProxy.getHibernateLazyInitializer();
-                boolean uninitialized = lazyInitializer.isUninitialized();
-                log.debug("Source HibernateProxy : initialized = {}", !uninitialized);
+                boolean initialized = !lazyInitializer.isUninitialized();
+                log.debug("Source HibernateProxy : initialized = {}", initialized);
             }
 
             // in case of Hibernate mapping. Ex : @OneToMany / @ManyToMany
             // Spans PersistentBag, PersistentSet, PersistentList, etc.
             if (sourceFieldValue instanceof PersistentCollection) {
-                boolean wasInitialized = ((PersistentCollection) sourceFieldValue).wasInitialized();
+                boolean initialized = ((PersistentCollection) sourceFieldValue).wasInitialized();
                 log.debug("on ClassMap source [{}], dest [{}]",
                         classMap.getSrcClassName(),
                         classMap.getDestClassName());
                 log.debug("on FieldMap source [{}], dest [{}] | wasInitialized = {}",
                         fieldMapping.getSrcFieldName(),
                         fieldMapping.getDestFieldName(),
-                        wasInitialized);
-                stopMapping = !wasInitialized;
+                        initialized);
+                stopMapping = !initialized;
             }
 
             return stopMapping;

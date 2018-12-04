@@ -7,11 +7,11 @@ import com.github.dozermapper.core.CustomFieldMapper;
  *
  * @see com.github.dozermapper.core.DozerBeanMapperBuilder
  */
-public class HibernateSkipLazyLoadingMapper
-        extends HibernateLazyLoadingAwareMapper
+public class HibernateSkipLazyLoadingFieldMapper
+        extends HibernateLazyLoadingAwareFieldMapper
         implements CustomFieldMapper {
 
-    public HibernateSkipLazyLoadingMapper() {
+    public HibernateSkipLazyLoadingFieldMapper() {
         super(true);
     }
 
