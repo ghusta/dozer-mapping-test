@@ -11,6 +11,7 @@ Testing the Dozer library for Java.
 ** Use https://dozermapper.github.io/gitbook/documentation/contextmapping.html[Context Based Mapping], a.k.a. use the _map-id_ attribute
 ** https://dozermapper.github.io/gitbook/documentation/immutable.html[Mapping of immutable objects], like @Value with Lombok
 ** https://dozermapper.github.io/gitbook/documentation/advancedproperty.html[Using Assembler Pattern], with successive mappings to the same target instance
+** https://dozermapper.github.io/gitbook/documentation/exclude.html[Excluding Fields]
 * https://stackoverflow.com/questions/tagged/dozer['dozer' tagged questions] on Stack Overflow
 * Specific to Hibernate :
 ** https://stackoverflow.com/questions/5552379/prevent-dozer-from-triggering-hibernate-lazy-loading[Prevent Dozer from triggering Hibernate lazy loading]
