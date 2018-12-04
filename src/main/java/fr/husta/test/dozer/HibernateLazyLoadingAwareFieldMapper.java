@@ -35,8 +35,7 @@ public abstract class HibernateLazyLoadingAwareFieldMapper
                 // NOTE: the HibernateProxy will be initialized anyway...
                 // see also org.hibernate.Hibernate#initialize
                 log.debug("Source : {} (@{}) is a HibernateProxy", source.getClass().getName(), source.hashCode());
-                HibernateProxy sourceHibernateProxy = (HibernateProxy) source;
-                LazyInitializer lazyInitializer = sourceHibernateProxy.getHibernateLazyInitializer();
+                LazyInitializer lazyInitializer = ((HibernateProxy) source).getHibernateLazyInitializer();
                 boolean initialized = !lazyInitializer.isUninitialized();
                 log.debug("Source HibernateProxy : initialized = {}", initialized);
             }
@@ -48,7 +47,7 @@ public abstract class HibernateLazyLoadingAwareFieldMapper
                 log.debug("on ClassMap source [{}], dest [{}]",
                         classMap.getSrcClassName(),
                         classMap.getDestClassName());
-                log.debug("on FieldMap source [{}], dest [{}] | wasInitialized = {}",
+                log.debug("on FieldMap source [{}], dest [{}] => initialized = {}",
                         fieldMapping.getSrcFieldName(),
                         fieldMapping.getDestFieldName(),
                         initialized);
