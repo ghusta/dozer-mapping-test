@@ -16,3 +16,4 @@ Testing the Dozer library for Java.
 * Specific to Hibernate :
 ** https://stackoverflow.com/questions/5552379/prevent-dozer-from-triggering-hibernate-lazy-loading[Prevent Dozer from triggering Hibernate lazy loading]
 ** https://github.com/DozerMapper/dozer/issues/190[Infinite mapping with Hibernate Bug] (using HibernateProxyResolver...)
+** https://vladmihalcea.com/initialize-lazy-proxies-collections-jpa-hibernate/[The best way to initialize LAZY entity and collection proxies with JPA and Hibernate]
